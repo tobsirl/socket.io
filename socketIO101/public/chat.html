@@ -18,14 +18,12 @@
           />
         </div>
         <div class="col-sm-2">
-          <input
-            class="btn btn-primary"
-            type="button"
-            type="submit"
-            value="Send!"
-          />
+          <input class="btn btn-primary" type="submit" value="Send!" />
         </div>
       </form>
+      <ul id="messages">
+        <!-- This will be populated by javascript -->
+      </ul>
     </div>
   </div>
 </div>
@@ -39,11 +37,17 @@
     socket.emit('messageToServer', { data: 'Data from the Client!' });
   });
 
-  socket.on('ping', () => {
-    console.log('Ping was received from the server');
-  });
+  // socket.on('ping', () => {
+  //   console.log('Ping was received from the server');
+  // });
 
-  socket.on('pong', lateny => {
-    console.log(`${lateny} Pong was sent to the server`);
+  // socket.on('pong', lateny => {
+  //   console.log(`${lateny} Pong was sent to the server`);
+  // });
+
+  document.querySelector('#message-form').addEventListener('submit', event => {
+    event.preventDefault();
+    const newMessage = document.querySelector('#user-message').value;
+    socket.emit('newMessageToServer', { text: newMessage });
   });
 </script>
