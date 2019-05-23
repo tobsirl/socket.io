@@ -11,7 +11,13 @@ io.on('connection', socket => {
   socket.on('messageToServer', dataFromClient => {
     console.log(dataFromClient);
   });
-  socket.on('newMessageToServer', newMessageFromClient => {
-    console.log(newMessageFromClient);
+
+  // Send it back to the same client
+  // socket.on('newMessageToServer', newMessageFromClient => {
+  //   console.log(newMessageFromClient);
+  // });
+
+  socket.on('newMessageToServer', msg => {
+    io.emit('messageToClients', { text: msg.text });
   });
 });
