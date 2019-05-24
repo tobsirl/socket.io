@@ -1,0 +1,17 @@
+{
+  "name": "socketIO201",
+  "version": "1.0.0",
+  "description": "",
+  "main": "chat.js",
+  "scripts": {
+    "start": "nodemon chat.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Paul Tobin <tobster111@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.0",
+    "socket.io": "^2.2.0"
+  }
+}
