@@ -12,12 +12,8 @@ io.on('connection', socket => {
     console.log(dataFromClient);
   });
 
-  // Send it back to the same client
-  // socket.on('newMessageToServer', newMessageFromClient => {
-  //   console.log(newMessageFromClient);
-  // });
-
-  socket.on('newMessageToServer', msg => {
-    io.emit('messageToClients', { text: msg.text });
+  io.of('/admin').on('connection', socket => {
+    console.log('Someone connected to the admin namespace!');
+    io.of('/admin').emit('welcome', 'Welcome to the admin channel!');
   });
 });
