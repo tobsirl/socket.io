@@ -20,6 +20,25 @@ socket.on('namespaceList', nsData => {
       console.log(`${nsEndpoint} I should go to now`);
     });
   });
+
+  const nsSocket = io('http://localhost:9000/wiki');
+  nsSocket.on('nsRoomLoad', nsRooms => {
+    // console.log(nsRooms);
+    let roomList = document.querySelector('.room-list');
+    roomList.innerHTML = '';
+    nsRooms.forEach(room => {
+      let glyph;
+      if (room.private) {
+        glyph = 'lock';
+      } else {
+        glyph = 'globe';
+      }
+      roomList.innerHTML += `<li><span class="glyphicon glyphicon-${glyph}"></span>${
+        room.roomTitle
+      }</li>`;
+    });
+    //Add a click listerer to each room
+  });
 });
 
 socket.on('messageFromServer', dataFromServer => {
