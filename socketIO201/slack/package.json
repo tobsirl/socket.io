@@ -2,9 +2,9 @@
   "name": "socketIO201",
   "version": "1.0.0",
   "description": "",
-  "main": "chat.js",
+  "main": "slack.js",
   "scripts": {
-    "start": "nodemon chat.js",
+    "start": "nodemon slack.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
