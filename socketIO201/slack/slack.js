@@ -48,7 +48,7 @@ namespaces.forEach(namespace => {
     });
     nsSocket.on('newMessageToServer', msg => {
       const fullMsg = {
-        text: msg,
+        text: msg.text,
         time: Date.now(),
         username: 'ptobin',
         avatar: 'https://via.placeholder.com/30'
