@@ -1,5 +1,5 @@
 function joinNs(endpoint) {
-  const nsSocket = io(`http://localhost:9000${endpoint}`);
+  nsSocket = io(`http://localhost:9000${endpoint}`);
   nsSocket.on('nsRoomLoad', nsRooms => {
     // console.log(nsRooms);
     let roomList = document.querySelector('.room-list');
