@@ -63,7 +63,7 @@ namespaces.forEach(namespace => {
       const roomTitle = Object.keys(nsSocket.rooms)[1];
       io.of('/wiki')
         .to(roomTitle)
-        .emit('messageToClients', fullMsg.text);
+        .emit('messageToClients', fullMsg);
     });
   });
 });
