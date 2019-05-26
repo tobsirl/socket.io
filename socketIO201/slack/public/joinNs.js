@@ -38,6 +38,6 @@ function joinNs(endpoint) {
   document.querySelector('.message-form').addEventListener('submit', event => {
     event.preventDefault();
     const newMessage = document.querySelector('#user-message').value;
-    socket.emit('newMessageToServer', { text: newMessage });
+    nsSocket.emit('newMessageToServer', { text: newMessage });
   });
 }

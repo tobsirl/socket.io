@@ -46,5 +46,24 @@ namespaces.forEach(namespace => {
           numberOfUsersCallback(clients.length);
         });
     });
+    nsSocket.on('newMessageToServer', msg => {
+      const fullMsg = {
+        text: msg,
+        time: Date.now(),
+        username: 'ptobin',
+        avatar: 'https://via.placeholder.com/30'
+      };
+      console.log(fullMsg);
+      // send this message to all the sockets that are in the room that this socket is in
+      // how do we find out what rooms this socket is in?
+      console.log(nsSocket.rooms);
+      // the user will be in the 2nd room in the object list
+      // this is because the socket ALWAYS joins its own room on connection
+      // get the keys
+      const roomTitle = Object.keys(nsSocket.rooms)[1];
+      io.of('/wiki')
+        .to(roomTitle)
+        .emit('messageToClients', fullMsg.text);
+    });
   });
 });
