@@ -54,7 +54,7 @@ namespaces.forEach(namespace => {
         .in(roomToJoin)
         .clients((error, clients) => {
           // console.log(clients.length);
-          io.of('/wiki').in(roomToJoin).emit('updateMembers', clients.)
+          io.of('/wiki').in(roomToJoin).emit('updateMembers', clients.length)
         });
     });
     nsSocket.on('newMessageToServer', msg => {
