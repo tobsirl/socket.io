@@ -61,6 +61,12 @@ namespaces.forEach(namespace => {
       // this is because the socket ALWAYS joins its own room on connection
       // get the keys
       const roomTitle = Object.keys(nsSocket.rooms)[1];
+      // we need to find the Room object for this room
+      const nsRoom = namespaces[0].rooms.find(room => {
+        return room.roomTitle === roomTitle;
+      });
+      console.log(nsRoom);
+      nsRoom.addMessage(fullMsg);
       io.of('/wiki')
         .to(roomTitle)
         .emit('messageToClients', fullMsg);
