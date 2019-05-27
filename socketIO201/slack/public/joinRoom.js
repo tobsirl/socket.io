@@ -16,5 +16,6 @@ function joinRoom(roomName) {
       const currentMessages = messagesUl.innerHTML;
       messagesUl.innerHTML = currentMessages + newMsg;
     });
+    messagesUl.scrollTo(0, messagesUl.scrollHeight);
   });
 }
