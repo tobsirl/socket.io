@@ -18,7 +18,7 @@ socket.on('namespaceList', nsData => {
     console.log(element);
     element.addEventListener('click', e => {
       const nsEndpoint = element.getAttribute('ns');
-      console.log(`${nsEndpoint} I should go to now`);
+      // console.log(`${nsEndpoint} I should go to now`);
       joinNs(nsEndpoint);
     });
   });

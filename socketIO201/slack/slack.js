@@ -45,7 +45,7 @@ namespaces.forEach(namespace => {
       //     console.log(clients.length);
       //     numberOfUsersCallback(clients.length);
       //   });
-      const nsRoom = namespaces.rooms.find(room => {
+      const nsRoom = namespace.rooms.find(room => {
         return room.roomTitle === roomToJoin;
       });
       nsSocket.emit('historyCatchUp', nsRoom.history);
@@ -75,7 +75,7 @@ namespaces.forEach(namespace => {
       // get the keys
       const roomTitle = Object.keys(nsSocket.rooms)[1];
       // we need to find the Room object for this room
-      const nsRoom = namespaces.rooms.find(room => {
+      const nsRoom = namespace.rooms.find(room => {
         return room.roomTitle === roomTitle;
       });
       console.log(nsRoom);
