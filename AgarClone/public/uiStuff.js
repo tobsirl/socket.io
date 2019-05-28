@@ -4,8 +4,8 @@ let player = {}; // This is all things "this" player
 
 let canvas = document.querySelector('#the-canvas');
 let context = canvas.getContext('2d');
-canvas.Width = wWidth;
-canvas.Height = wHeight;
+canvas.width = wWidth;
+canvas.height = wHeight;
 
 $(window).load(() => {
   $('#loginModal').modal('show');
