@@ -1,5 +1,3 @@
-
-
 // ===========================
 // ===========draw============
 // ===========================
@@ -18,20 +16,23 @@ function draw() {
   // translate allows us to move the canvas around
   context.translate(camX, camY);
 
-  //console.log(randomX);
-  context.beginPath();
-  context.fillStyle = 'rgb(255,0,0)';
-  // arg 1, 2 = x, y of the center of the arc
-  // arg 3 = radius
-  // arg 4 = where to start on the circle in radians, 0 = 3:00
-  // arg 5 = where to stop in radians
-  context.arc(player.locX, player.locY, 10, 0, Math.PI * 2);
-  // context.arc(200, 200, 10, 0, Math.PI * 2);
-  context.fill();
-  context.lineWidth = 3;
-  context.strokeStyle = 'rgb(0,255,0)';
-  context.stroke();
+  // draw all the players
+  players.forEach(p => {
+    context.beginPath();
+    context.fillStyle = p.color;
+    // arg 1, 2 = x, y of the center of the arc
+    // arg 3 = radius
+    // arg 4 = where to start on the circle in radians, 0 = 3:00
+    // arg 5 = where to stop in radians
+    context.arc(p.locX, p.locY, 10, 0, Math.PI * 2);
+    // context.arc(200, 200, 10, 0, Math.PI * 2);
+    context.fill();
+    context.lineWidth = 3;
+    context.strokeStyle = 'rgb(0,255,0)';
+    context.stroke();
+  });
 
+  // draw all the orbs
   orbs.forEach(orb => {
     context.beginPath();
     context.fillStyle = orb.color;
@@ -67,6 +68,9 @@ canvas.addEventListener('mousemove', event => {
     xVector = (angleDeg + 90) / 90;
     yVector = 1 - (angleDeg + 90) / 90;
   }
+
+  player.xVector = xVector;
+  player.yVector = yVector;
 
   speed = 10;
   xV = xVector;
