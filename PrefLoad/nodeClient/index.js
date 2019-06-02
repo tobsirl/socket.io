@@ -11,14 +11,21 @@ const socket = io('http://127.0.0.1:8181');
 socket.on('connect', () => {
   // console.log(`I connected to the socket server... hooray!`);
   // we need a way to identify this machine to whomever concerned
-  const nI = os.networkInterfaces()
+  const nI = os.networkInterfaces();
   let macA;
   // loop through all the nI for this machine and fin a non-internal one
   for (let key in nI) {
     if (!nI[key][0].internal) {
-      
+      macA = nI[key][0].mac;
+      break;
     }
   }
+  let perfDataInterval = setInterval(() => {
+    performanceData().then(allPerformanceData => {
+      // console.log(allPerformanceData);
+      socket.emit('perfData', allPerformanceData);
+    });
+  }, 1000);
 });
 
 function performanceData() {
@@ -100,7 +107,3 @@ function getCpuLoad() {
     }, 100);
   });
 }
-
-performanceData().then(allPerformanceData => {
-  console.log(allPerformanceData);
-});
