@@ -1,3 +1,11 @@
+const mongoose = require('mongoose');
+mongoose.connect(
+  'mongodb://127.0.0.1/perfData',
+  { useNewUrlParser: true }
+);
+
+const Machine = require('./models/Machine.js')
+
 function socketMain(io, socket) {
   // console.log('A socket connected!', socket.id);
 
@@ -13,6 +21,10 @@ function socketMain(io, socket) {
       socket.disconnet(true);
     }
   });
+
+  // a machine has connected, check to see if it's new.
+  // if it is, add it
+
   socket.on('perfData', data => {
     console.log(data);
   });
