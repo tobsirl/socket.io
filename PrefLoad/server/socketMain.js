@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
-mongoose.connect(
-  'mongodb://127.0.0.1/perfData',
-  { useNewUrlParser: true }
-);
+mongoose.connect('mongodb://127.0.0.1/perfData', { useNewUrlParser: true });
 
-const Machine = require('./models/Machine.js')
+const Machine = require('./models/Machine.js');
 
 function socketMain(io, socket) {
+  let macA;
   // console.log('A socket connected!', socket.id);
 
   socket.on('clientAuth', key => {
@@ -24,6 +22,9 @@ function socketMain(io, socket) {
 
   // a machine has connected, check to see if it's new.
   // if it is, add it
+  socket.on('initPerfData', data => {
+    data.macA
+  });
 
   socket.on('perfData', data => {
     console.log(data);
