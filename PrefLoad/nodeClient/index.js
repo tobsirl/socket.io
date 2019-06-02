@@ -20,6 +20,12 @@ socket.on('connect', () => {
       break;
     }
   }
+
+  // client auth with single key value
+  socket.emit('clientAuth', 'sdpoise23423');
+
+  // start sending over data on interval
+
   let perfDataInterval = setInterval(() => {
     performanceData().then(allPerformanceData => {
       // console.log(allPerformanceData);
