@@ -33,6 +33,7 @@ socket.on('connect', () => {
   let perfDataInterval = setInterval(() => {
     performanceData().then(allPerformanceData => {
       // console.log(allPerformanceData);
+      allPerformanceData.macA = macA;
       socket.emit('perfData', allPerformanceData);
     });
   }, 1000);
