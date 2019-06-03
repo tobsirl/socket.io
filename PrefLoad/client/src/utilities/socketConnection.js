@@ -1,6 +1,8 @@
 import io from 'socket.io-client';
 let socket = io.connect('http://localhost:8181');
 
-console.log(socket);
+socket.emit('clientAuth', 'auhnfas34234');
+
+// console.log(socket);
 
 export default socket;
