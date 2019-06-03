@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import socket from './utilities/socketConnection';
 
 function App() {
   return (

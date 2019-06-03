@@ -22,11 +22,12 @@ function socketMain(io, socket) {
 
   // a machine has connected, check to see if it's new.
   // if it is, add it
-  socket.on('initPerfData', data => {
+  socket.on('initPerfData', async data => {
     // update our socket connect function scoped variable
     macA = data.macA;
     // now go check mongo!
-    checkAndAdd(data);
+    const mongooseResponse = await checkAndAdd(data);
+    console.log(mongooseResponse);
   });
 
   socket.on('perfData', data => {
