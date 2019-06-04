@@ -6,11 +6,11 @@ const Cpu = props => {
   const canvas = document.querySelector('canvas');
   drawCircle(canvas, props.cpuData.cpuLoad);
   return (
-    <div className="col-sm3 cpu">
+    <div className="col-sm-3 cpu">
       <h3>Cpu Load!</h3>
       <div className="canvas-wrapper">
-        <canvas className="canvas" />
-        <div class="cpu-text">{props.cpuData.cpuLoad}</div>
+        <canvas className="canvas" width="200" height="200" />
+        <div className="cpu-text">{props.cpuData.cpuLoad}</div>
       </div>
     </div>
   );
