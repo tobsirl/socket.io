@@ -12,6 +12,7 @@ class Widget extends Component {
 
   render() {
     const {
+      macA,
       freeMem,
       totalMem,
       usedMem,
@@ -23,22 +24,14 @@ class Widget extends Component {
       cpuSpeed,
       cpuLoad
     } = this.props.data;
+    const cpu = { cpuLoad };
+    const mem = { totalMem, usedMem, memUseage, freeMem };
+    const info = { macA, osType, upTime, cpuModel, numCores, cpuSpeed };
     return (
       <div>
-        <h1>Widget!</h1>
-        <p>{freeMem}</p>
-        <p>{totalMem}</p>
-        <p>{usedMem}</p>
-        <p>{memUseage}</p>
-        <p>{osType}</p>
-        <p>{upTime}</p>
-        <p>{cpuModel}</p>
-        <p>{numCores}</p>
-        <p>{cpuSpeed}</p>
-        <p>{cpuLoad}</p>
-        <Cpu />
-        <Mem />
-        <Info />
+        <Cpu cpuData={cpu} />
+        <Mem memData={mem} />
+        <Info infoData={info} />
       </div>
     );
   }
